@@ -7,9 +7,9 @@ readBtn.addEventListener('click', read);
 downloadBtn.addEventListener('click', download);
 
 function read() {
-  console.log('reading');
+  console.log('Reading in browser');
 }
 
 function download() {
-  console.log('downloading');
+  console.log('Downloading chapter');
 }
