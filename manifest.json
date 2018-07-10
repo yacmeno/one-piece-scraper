@@ -1,0 +1,17 @@
+{
+	"name": "One Piece JB",
+	"version": "1.0",
+	"description": "Display the latest One Piece release from Jaimini's Box",
+	"browser_action": {
+		"default_popup": "popup.html"
+	},
+	"background": {
+		"scripts": ["background.js"]
+	},
+	"icons": {
+		"16": "images/jb-logo.png",
+		"48": "images/jb-logo.png",
+		"128": "images/jb-logo.png"
+	},
+	"manifest_version": 2
+}
