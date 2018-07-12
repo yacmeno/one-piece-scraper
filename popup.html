@@ -7,6 +7,14 @@
       height: 400px;
       width: 300px;
     }
+
+    img {
+      height: 300;
+      width: 250;
+      margin: auto;
+      display: block;
+    }
+
     button {
       height: 25px;
       width: 95px;
@@ -20,17 +28,28 @@
       left: 60;
       right: 50;
     }
+
+    #checkBox {
+      position: fixed;
+      bottom: 45;
+      right: 85;
+    }
   </style>
 </head>
 <body>
   <h1 align='center'>Latest chapter: </h1>
   <div id="chapterInfo">
     <!-- cover page img will go here -->
+    <img src="" alt="Latest cover" id="latestCover">
   </div>
   <div id="btnContainer">
     <button id='readBtn'>View</button>
     <button id="downloadBtn">Download</button>
     <script src="popup.js" type="text/javascript"></script>
+  </div>
+  <div id="checkBox">
+    <input type="checkbox" id="readCheck" name="ajaxRequest" value="true" checked>
+    <label for="readCheck">I've read this chapter</label>
   </div>
 </body>
 </html>
