@@ -1,45 +1,41 @@
-//'View' and 'Download' buttons functionality
+// depending on popup.html's checkbox, http request in background
+// in order to update the page with the latest image and links
 
 let readBtn = document.getElementById('readBtn');
 let downloadBtn = document.getElementById('downloadBtn');
+let readCheck = document.getElementById('readCheck');
 
-// chrome.runtime.sendMessage(readCheck.checked, function(response){
-//
-// });
-var readCheck = document.getElementById('readCheck');
-readCheck.checked;
-function saveCheck(){
-  // chrome.storage.sync.set({'checkbox': readCheck.checked}, function(){
-  //   message('Checkbox setting saved')
-  // });
-}
-saveCheck();
-
-chrome.storage.onChanged.addListener(function(changes, namespace){
-  for(key in changes){
-    var storageChange = changes[key];
-    console.log('storage key "%s" in namespace "%s" changed. ' +
-                'Old value was "%s", new valus is "%s".',
-               key,
-               namespace,
-               storageChange.oldValue,
-               storageChange.newValue);
+//update checkbox according to storage
+chrome.storage.sync.get('boxStatus', function(result){
+  console.log(result.key);
+  if (result.key === true) {
+    readCheck.checked = result.key;
+  } else if (result.key === false) {
+    readCheck.checked = result.key;
+  } else {
+    console.log('no saved checkbox status');
   }
 });
 
+//save the checkbox status
+readCheck.addEventListener('change', function(){
+  console.log('checkbox clicked');
+  chrome.storage.sync.set({boxStatus: readCheck.checked}, function(){
+    console.log('checkbox status saved to ' + readCheck.checked);
+  })
+});
+
+//deal with http request in background
+chrome.runtime.sendMessage({boxChecked: readCheck.checked}, function(response){
+  console.log(response.httpRequest);
+});
+
+//button redirect links are set by the background script
 readBtn.addEventListener('click', read);
 downloadBtn.addEventListener('click', download);
 
 function read() {
   console.log('Reading in browser');
-  let httpRequest = new XMLHttpRequest();
-  httpRequest.onreadystatechange = redirectTab;
-  httpRequest.open('GET', 'https://jaiminisbox.com/reader/series/one-piece-2/');
-  httpRequest.send();
-
-  function redirectTab() {
-    console.log('redirect tab running');
-  }
 }
 
 function download() {

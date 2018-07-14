@@ -1,5 +1,7 @@
-// Listen for extension-icon click and make http request
-// only initiate http request if chapter is already read
-
-//listen to messages from popup.js for checkedbox
-//http request for latest chapter and change popup.html content
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
+  if(request.boxChecked === true){
+    sendResponse({httpRequest: "checking for latest chapter..."});
+  } else{
+    sendResponse({httpRequest: "box unchecked, no http request"})
+  }
+});

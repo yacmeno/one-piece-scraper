@@ -2,7 +2,8 @@
 	"name": "One Piece JB",
 	"version": "1.0",
 	"description": "Display the latest One Piece release from Jaimini's Box",
-	"permissions": ["https://jaiminisbox.com/reader/series/one-piece-2/"],
+	"permissions": ["https://jaiminisbox.com/reader/series/one-piece-2/",
+									"storage"],
 	"browser_action": {
 		"default_popup": "popup.html"
 	},
