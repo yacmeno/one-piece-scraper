@@ -11,6 +11,13 @@
     p {
       text-align: center;
     }
+    
+    #chapterInfo {
+      position: absolute;
+      right: 4px;
+      left: 4px;
+      top: 30%;
+    }
 
     .info {
       font-weight: bold;
@@ -47,7 +54,7 @@
   <h1 align='center'>Latest chapter: </h1>
   <div id="chapterInfo">
     <!-- <img src="" alt="Latest cover" id="latestCover">
-    website refuses scraping through scripts to retrieve images-->
+    website forbids image scraping-->
 
     <p class="info" id="title"></p>
     <p class="info" id="date"></p>
@@ -57,7 +64,7 @@
     <button id='readBtn'>View</button>
     <button id="downloadBtn">Download</button>
   </div>
-  <div id="checkBox">
+  <div title="Check if you want to look for new chapter everytime you open this popup" id="checkBox">
     <input type="checkbox" id="readCheck" name="ajaxRequest" value="true" checked>
     <label for="readCheck">I've read this chapter</label>
   </div>

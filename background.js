@@ -19,8 +19,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
           latestChapter = xhr.response;
           latestDownload = latestChapter.querySelector(".element div a"); //a[href*='read'] not working
           latestRead = latestChapter.querySelector(".element .title a");
-          uploadDate = latestChapter.querySelector(".element .meta_r a")
-          sendResponse({downloadLink: latestDownload.href, readLink: latestRead.href, title: latestRead.innerText, date: uploadDate.innerHTML});
+          uploadDate = latestChapter.querySelector(".element .meta_r")
+          sendResponse({downloadLink: latestDownload.href, readLink: latestRead.href, title: latestRead.innerText, date: uploadDate.innerText});
         }
       }
     }
