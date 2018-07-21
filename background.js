@@ -1,8 +1,10 @@
 //if the popup checkbox is checked, http req to the website
 //send back the latest chapter url, the download url and the cover img
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  console.log('bg script running with checkbox set to ' + request.boxChecked);
   if (request.boxChecked === true) {
+    console.log('box checked');
     let latestChapter;
     let latestRead;
     let latestDownload;
@@ -25,5 +27,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
       }
     }
     return true; //sendResponse has to be asynchronous or variables sent are undefined
+  } else {
+    console.log('box unchecked');
+    sendResponse({downloadLink: 'unchecked checkbox', readLink: 'unchecked checkbox', title: 'unchecked checkbox', date: 'unchecked checkbox'});
   }
 });
