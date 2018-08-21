@@ -54,16 +54,16 @@ function changeBadge() {
 }
 
 //message for background http request
-//Need to delay the messaging to use the checkbox value loaded from storage otherwise the html default one is used
+//Need to delay the messaging to use the checkbox value loaded from storage, otherwise the html default one is used
 
-setTimeout(function(){backgroundMessage();}, 500);
+setTimeout(function(){backgroundMessage();}, 500); //wait for storage to load
 
 function backgroundMessage() {
   chrome.runtime.sendMessage({boxChecked: readCheck.checked}, function(response) {
     console.log(JSON.stringify(response));
   
     //fill information if response was chapter information
-    if (response.title != 'unchecked checkbox') {
+    if (response.title !== 'unchecked checkbox') {
       titlePara.innerText = response.title;
       datePara.innerText = response.date;
       readUrl.href = response.readLink;
@@ -74,7 +74,7 @@ function backgroundMessage() {
       });
     }
     
-    // website detects webcrawling and won't allow image retrieval
+    // website doesn't allow image retrieval
     // let xhr = new XMLHttpRequest();
     // xhr.onreadystatechange = changeImg;
     // xhr.open('GET', response.readLink);
